@@ -14,7 +14,7 @@ I place the most important value in data as integrity, and I value pre-processin
 ---
 
 배움에는 끝이 없으며 올바른 방향을 끊임없이 추구하는 데이터 엔지니어입니다.
-올바른 방향은 협업과 공유에서 나온다고 생각합니다.
+올바른 결정은 협업과 공유에서 나온다고 생각합니다.
 
 간단한 파이썬 함수형 프로그래밍에 능숙하며 비즈니스부터 루틴한 일상생활까지 클라우드를 통해 자동화합니다.
 
@@ -47,6 +47,11 @@ I place the most important value in data as integrity, and I value pre-processin
 
 - Instagram tag, Youtube API crawling and scheduling
 - Vue frontend, AWS lambda(chalice) backend, GitHub Action CI/CD
+
+### Extract text from HWP file
+
+- Customize HWP text / table parser
+- olefile parsing
 
 ### GAN with Instagram Tag
 
