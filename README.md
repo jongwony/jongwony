@@ -11,16 +11,6 @@ And I mainly solve problems with coding that fits the given infrastructure situa
 
 I place the most important value in data as integrity, and I value pre-processing to deliver valuable data.
 
----
-
-배움에는 끝이 없으며 올바른 방향을 끊임없이 추구하는 데이터 엔지니어입니다.
-올바른 결정은 협업과 공유에서 나온다고 생각합니다.
-
-간단한 파이썬 함수형 프로그래밍에 능숙하며 비즈니스부터 루틴한 일상생활까지 클라우드를 통해 자동화합니다.
-
-주어진 인프라 상황에 맞는 코딩으로 문제를 주로 해결하며 항상 의존도가 적고 더 나은 프로세스를 고민합니다.
-
-데이터에서 가장 중요한 가치를 무결성으로 두며 가치있는 데이터를 전달하기 위해 전처리를 중요시합니다.
 
 ## Skills
 
