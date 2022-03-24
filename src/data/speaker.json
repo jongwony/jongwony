@@ -1,0 +1,44 @@
+[
+  {
+    "href": "https://academy.ab180.co/courses/data-literacy-with-amplitude",
+    "name": "AB180_Webinar",
+    "value": "🌊 데이터가 흐르는 회사 만들기 with Amplitude",
+    "color": "3B68F9",
+    "description": "구성원 모두가 데이터와 가까워지고, 모두가 데이터를 볼 수 있도록 하는 조직 시스템은 어떻게 구축할 수 있을까요?\nHR테크 선두주자 원티드는 앰플리튜드를 활용해 어떻게 '데이터가 흐르는 원티드'를 실현했는지 확인해보세요."
+  },
+  {
+    "href": "https://www.youtube.com/watch?v=c03CTEvAreY",
+    "name": "Unity_Dev_Weeks",
+    "value": "AI_Brain_Room",
+    "color": "green",
+    "description": "#데이터엔지니어 와 함께, 유니티를 활용해\n#인공지능 #미디어아트 작업을 진행했던 사례를 소개하고,\n이 과정에서 겪었던 시행착오를 소개합니다.\n\n작년 #광주문화재단, #아트센터 나비의 프로젝트에 #프로그래머 로서\n비쥬얼과, 클라이언트 개발을 담당했던\n\"AI Brain Room\"이라는 미디어 아트 작업에 대한 소개입니다."
+  },
+  {
+    "href": "https://www.wanted.co.kr/events/wantedcon18",
+    "name": "Wanted_Data_Conference",
+    "value": "우리팀에게_딱_맞는_도구와_문화_만들기",
+    "color": "3B68F9",
+    "description": "데이터 엔지니어, 분석가들의 툴이 많아졌고 어느정도 선택의 폭이 정해져 있습니다만 이게 모든 비즈니스 문제를 해결해 주지는 않습니다. 데이터가 흐르는 원티드 문화를 만들기 위해 노력한 내용과 다양한 비즈니스 문제를 해결하기 위해 여러 툴을 내재화 시킨 사례를 이야기하며 이를 통해 분석가를 포함한 최종 사용자에게 어떻게 기여했는지, 어떤 성과를 가시적으로 이끌어냈는지 공유드립니다."
+  },
+  {
+    "href": "https://github.com/awskrug/cli-group",
+    "name": "AWS_KRUG_CLI_Group",
+    "value": "CLI_스크립트로_외부_API_붙여보기"
+  },
+  {
+    "href": "https://github.com/awskrug/database-group/blob/master/resources/20190924/aws_krug_database_20190924.pdf",
+    "name": "AWS_KRUG_Database_Group",
+    "value": "Aurora_MySQL을_위한_조그마한_팁"
+  },
+  {
+    "href": "https://github.com/awskrug/cli-group",
+    "name": "AWS_KRUG_CLI_Group",
+    "value": "나만의_CLI_만들기"
+  },
+  {
+    "href": "https://www.youtube.com/watch?v=a8U54J_Os24",
+    "name": "GDG_Incheon_2017",
+    "value": "Python_/_Mysql을_활용한_대용량_데이터_수집",
+    "color": "3572B0"
+  }
+]

@@ -17,6 +17,26 @@
             </li>
         </ul>
 
+        <h3>Bio</h3>
+        <ul>
+            <li v-for="hobby in bio" :key="hobby">
+                <a :href="'https://' + hobby + '.jongwony.com'" target="_blank" rel="noopener">
+                    <img alt="home"
+                         :src="'https://github-readme-stats.vercel.app/api/pin/?username=jongwony&repo=' + hobby">
+                </a>
+            </li>
+        </ul>
+
+        <h3>Speaker</h3>
+        <ul>
+          <li v-for="tag in speakers" :key="tag">
+            <a :href="tag.href">
+              <img :alt="tag.value" :src="`https://img.shields.io/badge/${tag.name}-${tag.value}-${tag.color}`">
+            </a>
+            <p class="description" v-if="tag.description">{{tag.description}}</p>
+          </li>
+        </ul>
+
         <ul>
             <li>
                 <a href="https://github.com/jongwony?tab=repositories" target="_blank" rel="noopener">
@@ -32,24 +52,6 @@
             </li>
         </ul>
 
-        <h3>Speaker</h3>
-        <ul>
-            <li v-for="tag in speakers" :key="tag">
-                <a :href="tag.href">
-                    <img :alt="tag.value" :src="`https://img.shields.io/badge/${tag.name}-${tag.value}-${tag.color}`">
-                </a>
-            </li>
-        </ul>
-
-        <h3>Bio</h3>
-        <ul>
-            <li v-for="hobby in bio" :key="hobby">
-                <a :href="'https://' + hobby + '.jongwony.com'" target="_blank" rel="noopener">
-                    <img alt="home"
-                         :src="'https://github-readme-stats.vercel.app/api/pin/?username=jongwony&repo=' + hobby">
-                </a>
-            </li>
-        </ul>
 
         <h3>Contact</h3>
         <ul>
@@ -63,6 +65,9 @@
 </template>
 
 <script>
+    import Speaker from '@/data/speaker.json'
+    import Bio from '@/data/bio.json'
+    import Tags from '@/data/tags.json'
     export default {
         name: 'HelloWorld',
         props: {
@@ -70,56 +75,9 @@
         },
         data() {
             return {
-                bio: ['home', 'fingerstyle'],
-                speakers: [
-                    {
-                        href: 'https://www.youtube.com/watch?v=c03CTEvAreY',
-                        name: 'Unity_Dev_Weeks',
-                        value: 'AI_Brain_Room',
-                        color: 'green',
-                    },
-                    {
-                        href: 'https://www.wanted.co.kr/events/wantedcon18',
-                        name: 'Wanted_Data_Conference',
-                        value: '우리팀에게_딱_맞는_도구와_문화_만들기',
-                        color: '3B68F9',
-                    },
-                    {
-                        href: 'https://github.com/awskrug/cli-group',
-                        name: 'AWS_KRUG_CLI_Group',
-                        value: 'CLI_스크립트로_외부_API_붙여보기',
-                    },
-                    {
-                        href: 'https://github.com/awskrug/database-group/blob/master/resources/20190924/aws_krug_database_20190924.pdf',
-                        name: 'AWS_KRUG_Database_Group',
-                        value: 'Aurora_MySQL을_위한_조그마한_팁'
-                    },
-                    {
-                        href: 'https://github.com/awskrug/cli-group',
-                        name: 'AWS_KRUG_CLI_Group',
-                        value: '나만의_CLI_만들기',
-                    },
-                    {
-                        href: 'https://www.youtube.com/watch?v=a8U54J_Os24',
-                        name: 'GDG_Incheon_2017',
-                        value: 'Python_/_Mysql을_활용한_대용량_데이터_수집',
-                        color: '3572B0'
-                    },
-                ],
-                tags: [
-                    {
-                        href: 'https://kreditjob.com',
-                        name: '',
-                        value: 'Kreditjob',
-                        color: 'd63462',
-                    },
-                    {
-                        href: 'https://www.slideshare.net/Jongwon_/presentations',
-                        name: '',
-                        value: 'SlideShare',
-                        color: '0B81B2',
-                    },
-                ],
+                bio: Bio,
+                speakers: Speaker,
+                tags: Tags,
             }
         },
     }
@@ -144,6 +102,10 @@
     li {
         display: inline-block;
         margin: 0 10px;
+    }
+
+    .description {
+        font-size: 12px;
     }
 
     a {
