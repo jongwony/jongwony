@@ -21,11 +21,6 @@
 - Build to Data lake / Data Warehouse
 - Event Collection Restructuring
 
-### Extract text from HWP file
-
-- Customize HWP text / table parser
-- hwp5 [olefile](https://github.com/decalage2/olefile) parsing
-
 ### GAN with Instagram Tag
 
 - Generate images by crawling Instagram hashtags
