@@ -1,5 +1,12 @@
 [
   {
+    "href": "https://youtu.be/yMA4F67deLE?t=620",
+    "name": "PyCon_2022",
+    "value": "(지루할 틈이 없는) 파이썬과 딥한 동고동락",
+    "color": "3B68F9",
+    "description": "제품의 개발부터 배포까지 일어나는 라이프사이클에서 원티드랩 데이터팀이 어떻게 독립적으로 문제를 해결하고 있는지 잘 보여줄 수 있는 대표 사례를 소개합니다."
+  },
+  {
     "href": "https://academy.ab180.co/courses/data-literacy-with-amplitude",
     "name": "AB180_Webinar",
     "value": "🌊 데이터가 흐르는 회사 만들기 with Amplitude",
