@@ -1,5 +1,12 @@
 [
   {
+    "href": "https://festa.io/events/2758",
+    "name": "GDG Songdo, Incheon 2022",
+    "value": "BigQuery_도입_후_4년",
+    "color": "3572B0",
+    "description": "원티드랩에서 4년동안 BigQuery를 운영하면서 겪은 문제와 이를 해결했던 경험, 여러 팁 위주로 소개해 드리며 데이터 기반 문화가 어떻게 발전해 왔는지 소개해 드립니다."
+  },
+  {
     "href": "https://youtu.be/yMA4F67deLE?t=620",
     "name": "PyCon_2022",
     "value": "(지루할 틈이 없는) 파이썬과 딥한 동고동락",
