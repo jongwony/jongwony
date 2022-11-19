@@ -29,7 +29,7 @@
 
         <h3>Speaker</h3>
         <ul>
-          <li v-for="tag in speakers" :key="tag">
+          <li v-for="tag in speaker" :key="tag">
             <a :href="tag.href">
               <img :alt="tag.value" :src="`https://img.shields.io/badge/${tag.name}-${tag.value}-${tag.color}`">
             </a>
@@ -65,9 +65,6 @@
 </template>
 
 <script>
-    import Speaker from '@/data/speaker.json'
-    import Bio from '@/data/bio.json'
-    import Tags from '@/data/tags.json'
     export default {
         name: 'HelloWorld',
         props: {
@@ -75,11 +72,31 @@
         },
         data() {
             return {
-                bio: Bio,
-                speakers: Speaker,
-                tags: Tags,
+                bio: null,
+                speaker: null,
+                tags: null,
             }
         },
+        created() {
+            fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/bio.json")
+                .then(r => r.json())
+                .then(json => {
+                    this.bio=json;
+                }
+            );
+            fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/speaker.json")
+                .then(r => r.json())
+                .then(json => {
+                    this.speaker=json;
+                }
+            );
+            fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/tags.json")
+                .then(r => r.json())
+                .then(json => {
+                    this.tags=json;
+                }
+            );
+        }
     }
 </script>
 
