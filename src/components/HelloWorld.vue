@@ -1,131 +1,157 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
-        <ul>
-            <li>
-                <a href="https://www.wantedlab.com/">
-                    <img alt="lang" src="https://img.shields.io/badge/WantedLab-Data_Engineer-3B68F9">
-                </a>
-            </li>
-        </ul>
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-4 fw-bold">{{ msg }}</h1>
+            <p class="lead mb-4">안녕하세요. 제 커리어를 소개합니다 🙌</p>
 
-        <ul>
-            <li v-for="tag in tags" :key="tag">
-                <a :href="tag.href">
-                    <img :alt="tag.value" :src="`https://img.shields.io/badge/${tag.name}-${tag.value}-${tag.color}`">
-                </a>
-            </li>
-        </ul>
+            <ul>
+                <li>
+                    <a href="https://www.wantedlab.com/">
+                        <img alt="lang" src="https://img.shields.io/badge/WantedLab-Data_Engineer-3B68F9">
+                    </a>
+                </li>
+            </ul>
 
-        <h3>Bio</h3>
-        <ul>
-            <li v-for="hobby in bio" :key="hobby">
-                <a :href="'https://' + hobby + '.jongwony.com'" target="_blank" rel="noopener">
-                    <img alt="home"
-                         :src="'https://github-readme-stats.vercel.app/api/pin/?username=jongwony&repo=' + hobby">
-                </a>
-            </li>
-        </ul>
-
-        <h3>Speaker</h3>
-        <ul>
-          <li v-for="tag in speaker" :key="tag">
-            <a :href="tag.href">
-              <img :alt="tag.value" :src="`https://img.shields.io/badge/${tag.name}-${tag.value}-${tag.color}`">
-            </a>
-            <p class="description" v-if="tag.description">{{tag.description}}</p>
-          </li>
-        </ul>
-
-        <ul>
-            <li>
-                <a href="https://github.com/jongwony?tab=repositories" target="_blank" rel="noopener">
-                    <img src="https://github-readme-stats.vercel.app/api?username=jongwony&show_icons=true&count_private=true"
-                         alt="jongwony" height="140"/>
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/jongwony" target="_blank" rel="noopener">
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongwony&layout=compact&hide=html,css,asp,php&langs_count=5"
-                         alt="top_langs" height="140"/>
-                </a>
-            </li>
-        </ul>
+            <ul>
+                <li v-for="tag in tags" :key="tag">
+                    <a :href="tag.href">
+                        <img :alt="tag.value"
+                            :src="`https://img.shields.io/badge/${tag.name}-${tag.value}-${tag.color}`">
+                    </a>
+                </li>
+            </ul>
+        </div>
 
 
-        <h3>Contact</h3>
-        <ul>
-            <li><a href="mailto:lastone9182@gmail.com"><img class="logo" alt="Email" src="@/assets/email.webp"></a></li>
-            <li><a href="https://open.kakao.com/o/sAAucdcd"><img class="logo" alt="Kakao" src="@/assets/kakao.webp"></a>
-            </li>
-            <li><a href="https://instagram.com/jongwony_"><img class="logo" alt="Instagram"
-                                                               src="@/assets/instagram.webp"></a></li>
-        </ul>
+        <div class="b-example-divider"></div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">Bio</h3>
+            <p class="lead mb-4">🧑‍💻 사이드 프로젝트를 해 본 것들이에요</p>
+            <ul>
+                <li v-for="hobby in bio" :key="hobby">
+                    <a :href="'https://' + hobby + '.jongwony.com'" target="_blank" rel="noopener">
+                        <img alt="home"
+                            :src="'https://github-readme-stats.vercel.app/api/pin/?username=jongwony&repo=' + hobby">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">Speaker</h3>
+            <p class="lead mb-4">🗣️ 스피커로 활동한 이력입니다. 발표 자료를 아카이빙 해봤어요. 클릭에 광고가 있을 수 있습니다 😉</p>
+        </div>
+
+        <div v-for="tag in speaker" :key="tag" class="px-4 py-5 my-5 text-center">
+            <h3 class="display-8 fw-bold px-4">{{ tag.value }}</h3>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4" v-if="tag.description">{{ tag.description }}</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a :href="tag.href" class="btn btn-lg btn-primary px-4" role="button">{{ tag.name }}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">GitHub</h3>
+            <p class="lead mb-4">소스 코드 구경하러 놀러오세요 :)</p>
+            <ul>
+                <li>
+                    <a href="https://github.com/jongwony?tab=repositories" target="_blank" rel="noopener">
+                        <img src="https://github-readme-stats.vercel.app/api?username=jongwony&show_icons=true&count_private=true"
+                            alt="jongwony" height="140" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/jongwony" target="_blank" rel="noopener">
+                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongwony&layout=compact&hide=html,css,asp,php&langs_count=5"
+                            alt="top_langs" height="140" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">Contact</h3>
+            <p class="lead mb-4">☕️ 커피 챗 한 번 해요 😄</p>
+            <ul>
+                <li><a href="mailto:lastone9182@gmail.com"><img class="logo" alt="Email" src="@/assets/email.webp"></a>
+                </li>
+                <li><a href="https://open.kakao.com/o/sAAucdcd"><img class="logo" alt="Kakao"
+                            src="@/assets/kakao.webp"></a>
+                </li>
+                <li><a href="https://instagram.com/jongwony_"><img class="logo" alt="Instagram"
+                            src="@/assets/instagram.webp"></a></li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'HelloWorld',
-        props: {
-            msg: String,
-        },
-        data() {
-            return {
-                bio: null,
-                speaker: null,
-                tags: null,
-            }
-        },
-        created() {
-            fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/bio.json")
-                .then(r => r.json())
-                .then(json => {
-                    this.bio=json;
-                }
-            );
-            fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/speaker.json")
-                .then(r => r.json())
-                .then(json => {
-                    this.speaker=json;
-                }
-            );
-            fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/tags.json")
-                .then(r => r.json())
-                .then(json => {
-                    this.tags=json;
-                }
-            );
+export default {
+    name: 'HelloWorld',
+    props: {
+        msg: String,
+    },
+    data() {
+        return {
+            bio: null,
+            speaker: null,
+            tags: null,
         }
+    },
+    created() {
+        fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/bio.json")
+            .then(r => r.json())
+            .then(json => {
+                this.bio = json;
+            }
+            );
+        fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/speaker.json")
+            .then(r => r.json())
+            .then(json => {
+                this.speaker = json;
+            }
+            );
+        fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/tags.json")
+            .then(r => r.json())
+            .then(json => {
+                this.tags = json;
+            }
+            );
     }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .logo {
-        width: 32px;
-        height: 32px;
-    }
+.logo {
+    width: 32px;
+    height: 32px;
+}
 
-    h3 {
-        margin: 40px 0 0;
-    }
+ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
+li {
+    display: inline-block;
+    margin: 0 10px;
+}
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    .description {
-        font-size: 12px;
-    }
-
-    a {
-        color: #42b983;
-    }
+.b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
 </style>
