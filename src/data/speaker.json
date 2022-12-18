@@ -1,64 +1,83 @@
 [
   {
     "href": "https://www.figma.com/community/file/1184857407054142886",
+    "event": "https://www.meetup.com/ko-KR/awskrug/events/289741122/",
     "name": "AWS KRUG Data Science",
     "value": "ECS로 Airflow 홀로 서기",
     "description": "혼자서 데이터 분석 클러스터를 운영하는 입장에서 Amazon ECS 를 활용하여 데이터팀 내에 Airflow 인프라와 비즈니스 코드를 분리하고 안정적인 문화로 정착시킨 사례를 소개합니다. 운영하면서 발생한 기술적 이슈를 해결하는 과정뿐만 아니라 팀 문화 및 프로세스 관점으로도 살펴봅니다."
   },
   {
     "href": "https://docs.google.com/presentation/d/1irwgt2L2OCwSc-Xok04o4kqsXZSC-zEaWYfMaybLzjA/edit#slide=id.g125514d5365_0_10",
+    "event": "https://festa.io/events/2758",
     "name": "GDG Songdo, Incheon 2022",
     "value": "BigQuery 도입 후 4년",
+    "date": "2022-11-19",
     "color": "3572B0",
     "description": "원티드랩에서 4년동안 BigQuery를 운영하면서 겪은 문제와 이를 해결했던 경험, 여러 팁 위주로 소개해 드리며 데이터 기반 문화가 어떻게 발전해 왔는지 소개해 드립니다."
   },
   {
     "href": "https://youtu.be/yMA4F67deLE?t=620",
+    "event": "https://2022.pycon.kr/program/talks/33",
     "name": "PyCon 2022",
     "value": "지루할 틈이 없는 파이썬과 딥한 동고동락",
+    "date": "2022-10-01",
     "color": "3B68F9",
     "description": "제품의 개발부터 배포까지 일어나는 라이프사이클에서 원티드랩 데이터팀이 어떻게 독립적으로 문제를 해결하고 있는지 잘 보여줄 수 있는 대표 사례를 소개합니다."
   },
   {
     "href": "https://academy.ab180.co/courses/data-literacy-with-amplitude",
+    "event": "https://academy.ab180.co/courses/data-literacy-with-amplitude",
     "name": "AB180 Webinar",
     "value": "🌊 데이터가 흐르는 회사 만들기 with Amplitude",
+    "date": "2022-03-17",
     "color": "3B68F9",
     "description": "구성원 모두가 데이터와 가까워지고, 모두가 데이터를 볼 수 있도록 하는 조직 시스템은 어떻게 구축할 수 있을까요?\nHR테크 선두주자 원티드는 앰플리튜드를 활용해 어떻게 '데이터가 흐르는 원티드'를 실현했는지 확인해보세요."
   },
   {
     "href": "https://www.youtube.com/watch?v=c03CTEvAreY",
+    "event": "https://unitysquare.co.kr/news/highlight/view?bidx=15&idx=355",
     "name": "Unity Dev Weeks",
     "value": "AI Brain Room",
+    "date": "2021-07-07",
     "color": "green",
     "description": "#데이터엔지니어 와 함께, 유니티를 활용해\n#인공지능 #미디어아트 작업을 진행했던 사례를 소개하고,\n이 과정에서 겪었던 시행착오를 소개합니다.\n\n작년 #광주문화재단, #아트센터 나비의 프로젝트에 #프로그래머 로서\n비쥬얼과, 클라이언트 개발을 담당했던\n\"AI Brain Room\"이라는 미디어 아트 작업에 대한 소개입니다."
   },
   {
     "href": "https://www.wanted.co.kr/events/wantedcon18",
+    "event": "https://www.wanted.co.kr/events/wantedcon18",
     "name": "Wanted Data Conference",
     "value": "우리팀에게 딱 맞는 도구와 문화 만들기",
+    "date": "2021-04-23",
     "color": "3B68F9",
     "description": "데이터 엔지니어, 분석가들의 툴이 많아졌고 어느정도 선택의 폭이 정해져 있습니다만 이게 모든 비즈니스 문제를 해결해 주지는 않습니다. 데이터가 흐르는 원티드 문화를 만들기 위해 노력한 내용과 다양한 비즈니스 문제를 해결하기 위해 여러 툴을 내재화 시킨 사례를 이야기하며 이를 통해 분석가를 포함한 최종 사용자에게 어떻게 기여했는지, 어떤 성과를 가시적으로 이끌어냈는지 공유드립니다."
   },
   {
     "href": "https://github.com/awskrug/cli-group",
+    "event": "https://www.meetup.com/ko-KR/awskrug/events/267489117/",
     "name": "AWS KRUG CLI Group",
-    "value": "CLI 스크립트로 외부 API 붙여보기"
+    "value": "CLI 스크립트로 외부 API 붙여보기",
+    "date": "2020-01-07"
   },
   {
     "href": "https://github.com/awskrug/database-group/blob/master/resources/20190924/aws_krug_database_20190924.pdf",
+    "event": "https://www.meetup.com/ko-KR/awskrug/events/263957031/",
     "name": "AWS KRUG Database Group",
-    "value": "Aurora MySQL을 위한 조그마한 팁"
+    "value": "Aurora MySQL을 위한 조그마한 팁",
+    "date": "2019-09-24"
   },
   {
     "href": "https://github.com/awskrug/cli-group",
+    "event": "https://www.meetup.com/ko-KR/awskrug/events/260780778/",
     "name": "AWS KRUG CLI Group",
-    "value": "나만의 CLI 만들기"
+    "value": "나만의 CLI 만들기",
+    "date": "2019-05-07"
   },
   {
     "href": "https://www.youtube.com/watch?v=a8U54J_Os24",
+    "event": "https://sites.google.com/view/gdg-incheon-devfest-17?pli=1",
     "name": "GDG Incheon 2017",
     "value": "Python / MySQL을 활용한 대용량 데이터 수집",
+    "date": "2017-10-21",
     "color": "3572B0"
   }
 ]
