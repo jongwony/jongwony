@@ -173,6 +173,8 @@ export default {
     background: #E3EEFF;
     border: 1px solid rgba(105, 165, 255, 0.3);
     border-radius: 8px;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
 
     font-weight: 600;
     font-size: 14px;
