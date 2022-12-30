@@ -50,7 +50,7 @@
                 <h3 class="display-8 fw-bold">{{ tag.value }}</h3>
                 <p class="subtitle">
                     <img class="favicon" :src="favicon(tag.event)" alt="event favicon" style="margin-right: 4px; margin-bottom: 2px;">
-                    <a v-if="tag.event" :href="tag.event">{{ tag.name }}</a>
+                    <a class="subtitle" v-if="tag.event" :href="tag.event">{{ tag.name }}</a>
                     <span style="opacity:0.3"> | </span> {{ tag.date }}
                     <br>
                 </p>
