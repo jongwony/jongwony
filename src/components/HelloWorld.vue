@@ -48,17 +48,15 @@
         <div v-for="(tag, index) in speaker" :key="tag" class="px-4 my-5">
             <div class="col-lg-6 mx-auto speaker">
                 <h3 class="display-8 fw-bold">{{ tag.value }}</h3>
-                <p class="description">
-                    {{ tag.name }} <span style="opacity:0.3">|</span> {{ tag.date }}
+                <p class="subtitle">
+                    <img class="favicon" :src="favicon(tag.event)" alt="event favicon" style="margin-right: 4px; margin-bottom: 2px;">
+                    <a v-if="tag.event" :href="tag.event">{{ tag.name }}</a>
+                    <span style="opacity:0.3"> | </span> {{ tag.date }}
                     <br>
-                    <a v-if="tag.event" class="description" :href="tag.event">
-                        <img class="favicon" :src="favicon(tag.event)" alt="event favicon" style="margin-bottom: 3px;">
-                        이벤트 둘러보기
-                    </a>
                 </p>
-                <p class="lead mb-4" v-if="tag.description">{{ tag.description }}</p>
+                <p class="lead mb-4 description" v-if="tag.description">{{ tag.description }}</p>
                 <a v-if="tag.href" :href="tag.href" class="btn btn-lg btn-primary px-4 attachment" role="button">
-                    <img src="@/assets/downloads.svg" alt="download_svg" style="margin-bottom: 3px;">
+                    <img src="@/assets/downloads.svg" alt="download_svg">
                     발표자료 보러가기
                 </a>
                 <hr v-if="index !== Object.keys(speaker).length - 1" class="my-5">
@@ -155,8 +153,13 @@ export default {
     height: 16px;
 }
 
-.description {
+.subtitle {
+    font-size: 14px;
     color: #737680;
+}
+
+.description {
+    font-size: 16px;
 }
 
 .speaker {
@@ -172,6 +175,7 @@ export default {
     border-radius: 8px;
 
     font-weight: 600;
+    font-size: 14px;
 
     color: #2178FC;
 }
