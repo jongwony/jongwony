@@ -56,7 +56,7 @@
                 </p>
                 <p class="lead mb-4 description" v-if="tag.description">{{ tag.description }}</p>
                 <a v-if="tag.href" :href="tag.href" class="btn btn-lg btn-primary px-4 attachment" role="button">
-                    <img src="@/assets/downloads.svg" alt="download_svg">
+                    <img style="margin-right:4px;" src="@/assets/downloads.svg" alt="download_svg">
                     발표자료 보러가기
                 </a>
                 <hr v-if="index !== Object.keys(speaker).length - 1" class="my-5">
@@ -173,11 +173,11 @@ export default {
     background: #E3EEFF;
     border: 1px solid rgba(105, 165, 255, 0.3);
     border-radius: 8px;
-    padding-top: 0.8em;
-    padding-bottom: 0.8em;
+    padding-top: 0.9em;
+    padding-bottom: 0.9em;
 
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
 
     color: #2178FC;
 }
