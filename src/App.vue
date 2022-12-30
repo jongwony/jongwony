@@ -25,6 +25,10 @@ export default {
   margin-top: 60px;
 }
 
+img {
+    max-width: 100%;
+}
+
 @media (min-width: 992px) {
   .rounded-lg-3 {
     border-radius: .3rem;

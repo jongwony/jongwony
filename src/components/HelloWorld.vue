@@ -45,13 +45,23 @@
             <p class="lead mb-4">🗣️ 스피커로 활동한 이력입니다. 발표 자료를 아카이빙 해봤어요. 클릭에 광고가 있을 수 있습니다 😉</p>
         </div>
 
-        <div v-for="tag in speaker" :key="tag" class="px-4 py-5 my-5 text-center">
-            <h3 class="display-8 fw-bold px-4">{{ tag.value }}</h3>
-            <div class="col-lg-6 mx-auto">
+        <div v-for="(tag, index) in speaker" :key="tag" class="px-4 my-5">
+            <div class="col-lg-6 mx-auto speaker">
+                <h3 class="display-8 fw-bold">{{ tag.value }}</h3>
+                <p class="description">
+                    {{ tag.name }} <span style="opacity:0.3">|</span> {{ tag.date }}
+                    <br>
+                    <a v-if="tag.event" class="description" :href="tag.event">
+                        <img class="favicon" :src="favicon(tag.event)" alt="event favicon" style="margin-bottom: 3px;">
+                        이벤트 둘러보기
+                    </a>
+                </p>
                 <p class="lead mb-4" v-if="tag.description">{{ tag.description }}</p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a :href="tag.href" class="btn btn-lg btn-primary px-4" role="button">{{ tag.name }}</a>
-                </div>
+                <a v-if="tag.href" :href="tag.href" class="btn btn-lg btn-primary px-4 attachment" role="button">
+                    <img src="@/assets/downloads.svg" alt="download_svg" style="margin-bottom: 3px;">
+                    발표자료 보러가기
+                </a>
+                <hr v-if="index !== Object.keys(speaker).length - 1" class="my-5">
             </div>
         </div>
 
@@ -126,12 +136,46 @@ export default {
                 this.tags = json;
             }
             );
+    },
+    methods: {
+        get_hostname: function (url) {
+            return new URL(url).hostname
+        },
+        favicon: function (url) {
+            return `https://icons.duckduckgo.com/ip2/${this.get_hostname(url)}.ico`
+        }
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.favicon {
+    width: 16px;
+    height: 16px;
+}
+
+.description {
+    color: #737680;
+}
+
+.speaker {
+    text-align: left;
+}
+
+.attachment {
+    /* button */
+    box-sizing: border-box;
+
+    background: #E3EEFF;
+    border: 1px solid rgba(105, 165, 255, 0.3);
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    color: #2178FC;
+}
+
 .logo {
     width: 32px;
     height: 32px;
