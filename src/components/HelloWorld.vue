@@ -22,6 +22,26 @@
             </ul>
         </div>
 
+        <div class="b-example-divider"></div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">GitHub</h3>
+            <p class="lead mb-4">소스 코드 구경하러 놀러오세요 :)</p>
+            <ul>
+                <li>
+                    <a href="https://github.com/jongwony?tab=repositories" target="_blank" rel="noopener">
+                        <img src="https://github-readme-stats.vercel.app/api?username=jongwony&show_icons=true&count_private=true"
+                            alt="jongwony" height="140" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/jongwony" target="_blank" rel="noopener">
+                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongwony&layout=compact&hide=html,css,asp,php&langs_count=5"
+                            alt="top_langs" height="140" />
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <div class="b-example-divider"></div>
 
@@ -61,27 +81,6 @@
                 </a>
                 <hr v-if="index !== Object.keys(speaker).length - 1" class="my-5">
             </div>
-        </div>
-
-        <div class="b-example-divider"></div>
-
-        <div class="px-4 py-5 my-5 text-center">
-            <h3 class="display-6 fw-bold">GitHub</h3>
-            <p class="lead mb-4">소스 코드 구경하러 놀러오세요 :)</p>
-            <ul>
-                <li>
-                    <a href="https://github.com/jongwony?tab=repositories" target="_blank" rel="noopener">
-                        <img src="https://github-readme-stats.vercel.app/api?username=jongwony&show_icons=true&count_private=true"
-                            alt="jongwony" height="140" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/jongwony" target="_blank" rel="noopener">
-                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongwony&layout=compact&hide=html,css,asp,php&langs_count=5"
-                            alt="top_langs" height="140" />
-                    </a>
-                </li>
-            </ul>
         </div>
 
         <div class="b-example-divider"></div>
