@@ -25,6 +25,76 @@
         <div class="b-example-divider"></div>
 
         <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">Scrap</h3>
+            <p class="lead mb-4">🗞️ 대외 활동 이력입니다</p>
+
+            <div class="container py-5 text-center">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" v-for="(link, index) in scrap" :key="index">
+                        <div class="card h-100">
+                            <img :src="link.image" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ link.title }}</h5>
+                                <p class="card-text">{{ link.description }}</p>
+                                <p>
+                                    <img class="favicon" :src="favicon(link.url)" alt="event favicon"
+                                        style="margin-right: 4px; margin-bottom: 2px;">
+                                    <a class="subtitle" v-if="link.url" :href="link.url">{{ link.url }}</a>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-body-secondary">{{ link.footer }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">Speaker</h3>
+            <p class="lead mb-4">🗣️ 스피커로 활동한 이력입니다. 발표 자료를 아카이빙 해봤어요. 클릭에 광고가 있을 수 있습니다 😉</p>
+        </div>
+
+        <div v-for="(tag, index) in speaker" :key="tag" class="px-4 my-5">
+            <div class="col-lg-6 mx-auto speaker">
+                <h3 class="display-8 fw-bold">{{ tag.value }}</h3>
+                <p class="subtitle">
+                    <img class="favicon" :src="favicon(tag.event)" alt="event favicon"
+                        style="margin-right: 4px; margin-bottom: 2px;">
+                    <a class="subtitle" v-if="tag.event" :href="tag.event">{{ tag.name }}</a>
+                    <span style="opacity:0.3"> | </span> {{ tag.date }}
+                    <br>
+                </p>
+                <p class="lead mb-4 description" v-if="tag.description">{{ tag.description }}</p>
+                <a v-if="tag.href" :href="tag.href" class="btn btn-lg btn-primary px-4 attachment" role="button">
+                    <img style="margin-right:4px;" src="@/assets/downloads.svg" alt="download_svg">
+                    발표자료 보러가기
+                </a>
+                <hr v-if="index !== Object.keys(speaker).length - 1" class="my-5">
+            </div>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h3 class="display-6 fw-bold">Bio</h3>
+            <p class="lead mb-4">🧑‍💻 사이드 프로젝트를 해 본 것들이에요</p>
+            <ul>
+                <li v-for="hobby in bio" :key="hobby">
+                    <a :href="'https://' + hobby + '.jongwony.com'" target="_blank" rel="noopener">
+                        <img alt="home"
+                            :src="'https://github-readme-stats.vercel.app/api/pin/?username=jongwony&repo=' + hobby">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="px-4 py-5 my-5 text-center">
             <h3 class="display-6 fw-bold">GitHub</h3>
             <p class="lead mb-4">소스 코드 구경하러 놀러오세요 :)</p>
             <ul>
@@ -46,53 +116,10 @@
         <div class="b-example-divider"></div>
 
         <div class="px-4 py-5 my-5 text-center">
-            <h3 class="display-6 fw-bold">Bio</h3>
-            <p class="lead mb-4">🧑‍💻 사이드 프로젝트를 해 본 것들이에요</p>
-            <ul>
-                <li v-for="hobby in bio" :key="hobby">
-                    <a :href="'https://' + hobby + '.jongwony.com'" target="_blank" rel="noopener">
-                        <img alt="home"
-                            :src="'https://github-readme-stats.vercel.app/api/pin/?username=jongwony&repo=' + hobby">
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="b-example-divider"></div>
-
-        <div class="px-4 py-5 my-5 text-center">
-            <h3 class="display-6 fw-bold">Speaker</h3>
-            <p class="lead mb-4">🗣️ 스피커로 활동한 이력입니다. 발표 자료를 아카이빙 해봤어요. 클릭에 광고가 있을 수 있습니다 😉</p>
-        </div>
-
-        <div v-for="(tag, index) in speaker" :key="tag" class="px-4 my-5">
-            <div class="col-lg-6 mx-auto speaker">
-                <h3 class="display-8 fw-bold">{{ tag.value }}</h3>
-                <p class="subtitle">
-                    <img class="favicon" :src="favicon(tag.event)" alt="event favicon" style="margin-right: 4px; margin-bottom: 2px;">
-                    <a class="subtitle" v-if="tag.event" :href="tag.event">{{ tag.name }}</a>
-                    <span style="opacity:0.3"> | </span> {{ tag.date }}
-                    <br>
-                </p>
-                <p class="lead mb-4 description" v-if="tag.description">{{ tag.description }}</p>
-                <a v-if="tag.href" :href="tag.href" class="btn btn-lg btn-primary px-4 attachment" role="button">
-                    <img style="margin-right:4px;" src="@/assets/downloads.svg" alt="download_svg">
-                    발표자료 보러가기
-                </a>
-                <hr v-if="index !== Object.keys(speaker).length - 1" class="my-5">
-            </div>
-        </div>
-
-        <div class="b-example-divider"></div>
-
-        <div class="px-4 py-5 my-5 text-center">
             <h3 class="display-6 fw-bold">Contact</h3>
-            <p class="lead mb-4">☕️ 커피 챗 한 번 해요 😄</p>
+            <p class="lead mb-4">☕️ 커피 챗 환영합니다. 😄</p>
             <ul>
                 <li><a href="mailto:lastone9182@gmail.com"><img class="logo" alt="Email" src="@/assets/email.webp"></a>
-                </li>
-                <li><a href="https://open.kakao.com/o/sAAucdcd"><img class="logo" alt="Kakao"
-                            src="@/assets/kakao.webp"></a>
                 </li>
                 <li><a href="https://instagram.com/jongwony_"><img class="logo" alt="Instagram"
                             src="@/assets/instagram.webp"></a></li>
@@ -112,6 +139,7 @@ export default {
             bio: null,
             speaker: null,
             tags: null,
+            scrap: null,
         }
     },
     created() {
@@ -131,6 +159,12 @@ export default {
             .then(r => r.json())
             .then(json => {
                 this.tags = json;
+            }
+            );
+        fetch("https://raw.githubusercontent.com/jongwony/jongwony/main/src/data/scrap.json")
+            .then(r => r.json())
+            .then(json => {
+                this.scrap = json;
             }
             );
     },
