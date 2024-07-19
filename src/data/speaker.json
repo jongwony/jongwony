@@ -1,5 +1,21 @@
 [
   {
+    "href": "https://www.youtube.com/watch?v=0w6unWDvL1U",
+    "event": "https://event-us.kr/datayanolja2020/event/81278",
+    "name": "데이터야놀자 2024",
+    "value": "SQL과 Jira 티켓 생성 슬랙봇 제작기",
+    "date": "2024-06-01",
+    "description": "생성AI 를 처음 접한 경험과 회사에 기여하기 위해 만든 슬랙봇을 만든 과정을 소개합니다. 회사 데이터 소스를 이해하여 찾고, 쿼리를 생성하는 SQL 생성 슬랙봇부터 이모지만 누르면 슬랙 스레드를 요약하고 Jira 티켓을 생성하는 슬랙봇까지. 분석가, 마케터부터 PO, 개발자를 넘어 전사 모두가 활용하도록 개발부터 적용, 문화를 전파했던 스토리를 풀어봅니다."
+  },
+  {
+    "href": "https://kr-resources.awscloud.com/aws-summit-seoul-2024-day-2-track-9/24-on-demand-d2t9s6-video",
+    "event": "https://aws.amazon.com/ko/events/summits/seoul/",
+    "name": "AWS Summit Seoul 2024",
+    "value": "SQL 생성 슬랙봇으로 데이터 디스커버리 영역 개척하기",
+    "date": "2024-05-17",
+    "description": "SQL 생성 AI 슬랙봇을 포함한 데이터 디스커버리 아키텍처 구축 사례와 조직 내 데이터 문화 촉진 전략을 소개하여, 데이터 업무 방식에 대한 혁신적이고 실질적인 인사이트를 소개합니다."
+  },
+  {
     "href": "https://www.figma.com/proto/dlfvNtplxH5zOccjX5Pjsq/AWS-KRUG%3A-SQL-쿼리-생성-엔지니어-%40Data-Bolt?type=design&node-id=57-637&t=YkJsHcce7dPcQquT-1&scaling=contain&page-id=57%3A636",
     "event": "https://www.meetup.com/ko-KR/awskrug/events/297523957/",
     "name": "AWS KRUG Data Group",
