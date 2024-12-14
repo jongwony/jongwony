@@ -83,10 +83,10 @@
             <h3 class="display-6 fw-bold">Bio</h3>
             <p class="lead mb-4">🧑‍💻 사이드 프로젝트를 해 본 것들이에요</p>
             <ul>
-                <li v-for="hobby in bio" :key="hobby">
-                    <a :href="'https://' + hobby + '.jongwony.com'" target="_blank" rel="noopener">
+                <li v-for="repo in bio" :key="repo">
+                    <a :href="repo.href" target="_blank" rel="noopener">
                         <img alt="home"
-                            :src="'https://github-readme-stats.vercel.app/api/pin/?username=jongwony&repo=' + hobby">
+                            :src="'https://github-readme-stats.vercel.app/api/pin/?username=jongwony&repo=' + repo.name">
                     </a>
                 </li>
             </ul>

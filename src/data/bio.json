@@ -1,5 +1,5 @@
 [
-  "pass.connects.im",
-  "mbti",
-  "fingerstyle"
+  {"name": "pass.connects.im", "href": "https://pass.connects.im"},
+  {"name": "mbti", "href": "https://mbti.jongwony.com"},
+  {"name": "fingerstyle", "href": "https://fingerstyle.jongwony.com"}
 ]
