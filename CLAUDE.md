@@ -4,12 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio/career website (www.jongwony.com). Vue.js 2 + Bootstrap 5 SPA hosted on GitHub Pages.
+Personal portfolio/career website (www.jongwony.com). Vue 3 + Bootstrap 5 SPA hosted on GitHub Pages.
 
 ## Commands
 
 ```bash
-npm install --legacy-peer-deps  # Install dependencies (has peer deps conflicts)
+npm install                     # Install dependencies
 npm run serve                   # Dev server (localhost:8080)
 npm run build                   # Production build (dist/)
 npm run lint                    # ESLint check
