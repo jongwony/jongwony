@@ -8,6 +8,13 @@
     "description": "Bash is all you need - 생산성 극대화로 이어지는 Unix 철학. Naver D2SF에서 진행된 AI Builder 3rd Meetup에서 발표했습니다."
   },
   {
+    "href": "https://drive.google.com/file/d/11RJcv2sKytys977odD0-ZVforiVOXfe3/view?usp=drive_link",
+    "event": "https://medium.com/delightroom/%EC%95%8C%EB%9D%BC%EB%AF%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%8B%EC%97%85-%EC%9E%90%EB%A3%8C-%EA%B3%B5%EC%9C%A0-cbddee34b897",
+    "name": "알라미 데이터 밋업",
+    "value": "측정 불가능한 것을 측정하기",
+    "date": "2026-01-21"
+  },
+  {
     "href": "https://medium.com/delightroom/claude-code-subagent-context-engineering-5d8123ed4252",
     "event": "https://www.linkedin.com/company/delightroom/",
     "name": "딜라이트룸 AI 리터러시 공유",
