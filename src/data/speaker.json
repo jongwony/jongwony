@@ -1,5 +1,29 @@
 [
   {
+    "href": "https://www.figma.com/deck/tlkYbWZKSfzdOwLAoh3vjn/Claude-Code-in-Terminal",
+    "event": "https://github.com/team-attention/ai-builders-meetup/tree/main/3-skillthon",
+    "name": "Team Attention & Anthropic Skillthon",
+    "value": "Claude Code in Terminal",
+    "date": "2026-01-24",
+    "description": "Bash is all you need - 생산성 극대화로 이어지는 Unix 철학. Naver D2SF에서 진행된 AI Builder 3rd Meetup에서 발표했습니다."
+  },
+  {
+    "href": "https://medium.com/delightroom/claude-code-subagent-context-engineering-5d8123ed4252",
+    "event": "https://www.linkedin.com/company/delightroom/",
+    "name": "딜라이트룸 AI 리터러시 공유",
+    "value": "Claude Code Subagent: Context Engineering",
+    "date": "2025-11",
+    "description": "Claude Code를 사용하면서 직면하는 컨텍스트 문제들(Context low 경고, MCP tools 오버헤드 등)을 해결하기 위한 Subagent 패턴과 컨텍스트 엔지니어링 전략을 다룹니다."
+  },
+  {
+    "href": "https://www.figma.com/deck/gfjxpJfFMWWdiEIvXIRMYq/Claude-Code",
+    "event": "https://www.linkedin.com/company/delightroom/",
+    "name": "딜라이트룸 AI 리터러시 공유",
+    "value": "Claude Code 따라잡기",
+    "date": "2025-08",
+    "description": "Claude Code 창시자의 철학을 따라가보며 내부 동작을 깊이있게 살펴보는 자료입니다. 빠르게 변화하는 릴리즈 내용을 따라가고, 단순 기능 추가 너머의 개념과 큰 그림을 이해하기 위해 정리했습니다."
+  },
+  {
     "event": "https://addinedu.com/sub/edu_view.php?ge_id=79",
     "name": "애드인에듀 AI-X 3기 멘토링",
     "value": "AI 활용 서비스 개발 및 포트폴리오 멘토링",

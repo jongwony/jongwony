@@ -6,8 +6,8 @@
 
             <ul>
                 <li>
-                    <a href="https://www.wantedlab.com/">
-                        <img alt="lang" src="https://img.shields.io/badge/WantedLab-Data_Engineer-3B68F9">
+                    <a href="https://delightroom.com/">
+                        <img alt="company" src="https://img.shields.io/badge/딜라이트룸(Alarmy)-Data_Engineer-FF5722">
                     </a>
                 </li>
             </ul>
