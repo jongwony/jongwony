@@ -7,11 +7,3 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jongwon-choi-366b5b111/)
 [![Website](https://img.shields.io/badge/jongwony.com-000000?style=flat-square&logo=safari&logoColor=white)](https://www.jongwony.com)
 
----
-
-<a href="https://github.com/jongwony">
-  <img src="https://github-readme-stats.vercel.app/api?username=jongwony&show_icons=true&count_private=true" alt="jongwony" height="150" />
-</a>
-<a href="https://github.com/jongwony">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongwony&layout=compact&hide=html,css,asp,php&langs_count=5" alt="top_langs" height="150" />
-</a>
