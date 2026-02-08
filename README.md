@@ -1,30 +1,17 @@
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fjongwony)](https://hits.seeyoufarm.com)
+## Jongwon Choi
 
-## :kr: Data Engineer
+**Data Engineer** @ [딜라이트룸 (Alarmy)](https://delightroom.com/)
 
-:dart: Amazon Web Services, Google Bigquery, Google Tag Manager, Airflow
+데이터 인프라 구축과 AI 활용 자동화로 비즈니스 문제를 해결합니다.
 
-:computer: Python, NodeJS
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jongwon-choi-366b5b111/)
+[![Website](https://img.shields.io/badge/jongwony.com-000000?style=flat-square&logo=safari&logoColor=white)](https://www.jongwony.com)
 
-## Projects
+---
 
-### :label: [크레딧잡(Kreditjob)](https://kreditjob.com/)
-
-- Rebuild NodeJS Backend from jQuery
-- Database design
-- Build data pipeline, Crawling
-- ETL, ELT to Data lake / Data Warehouse
-
-### :label: [Wantedlab data](https://wanted.co.kr/)
-
-- Complex scheduling with airflow sensors
-- Build to Data lake / Data Warehouse
-- Event Collection Restructuring
-
-### GAN with Instagram Tag
-
-- Generate images by crawling Instagram hashtags
-- Customize Facebook open sources
-- Exhibited at the Gwangju Cultural Foundation
-
-## [Outside of work](https://www.jongwony.com)
+<a href="https://github.com/jongwony">
+  <img src="https://github-readme-stats.vercel.app/api?username=jongwony&show_icons=true&count_private=true" alt="jongwony" height="150" />
+</a>
+<a href="https://github.com/jongwony">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jongwony&layout=compact&hide=html,css,asp,php&langs_count=5" alt="top_langs" height="150" />
+</a>
