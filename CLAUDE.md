@@ -4,50 +4,90 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio/career website (www.jongwony.com). Vue 3 + Bootstrap 5 SPA hosted on GitHub Pages.
+Personal portfolio/career website (www.jongwony.com). Astro static site hosted on GitHub Pages.
+
+The site is mid-renewal. The Vue 3 + Bootstrap SPA has been replaced by an Astro scaffold
+serving a minimal landing page; the full site is still being built.
 
 ## Commands
 
 ```bash
 npm install                     # Install dependencies
-npm run serve                   # Dev server (localhost:8080)
+npm run dev                     # Dev server
 npm run build                   # Production build (dist/)
-npm run lint                    # ESLint check
-./deploy.sh                     # Deploy to gh-pages branch
+npm run preview                 # Serve the production build locally
 ```
 
-## Architecture
+## Deployment
 
-### Data Flow (Important)
-
-JSON data files are **fetched at runtime from GitHub raw URLs**:
+Deployment runs entirely in GitHub Actions. There is no deploy script — do not add one.
 
 ```
-src/data/*.json  →  push to main  →  GitHub raw URL  →  runtime fetch
+push to main  →  .github/workflows/deploy.yml
+              →  withastro/action     (build)
+              →  actions/deploy-pages (publish)
 ```
 
-- `bio.json`, `speaker.json`, `tags.json`, `scrap.json`
-- JSON changes reflect immediately after main push (no build needed)
-- Vue component changes require `./deploy.sh` execution
+- GitHub Pages **Source must be set to "GitHub Actions"**, not a branch. The `gh-pages`
+  branch is no longer part of the deployment path.
+- The custom domain is carried by `public/CNAME`. Astro copies `public/` verbatim into the
+  build output, so `dist/CNAME` is what binds www.jongwony.com. **Deleting it drops the
+  domain**, and GitHub then answers that host with 404.
+- The `deploy` job declares `needs: build`, so a failed build cannot publish stale output.
 
-### Deployment Structure
+Verifying a deploy takes two separate checks — either one alone gives a false pass:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://www.jongwony.com   # must be 200
+curl -s -H 'Cache-Control: no-cache' https://www.jongwony.com | shasum   # must differ from before
+```
+
+A 200 alone can mean old output is still being served; a changed hash alone can mean the
+domain came unbound and you are hashing GitHub's 404 page.
+
+## Data Flow (Important)
+
+Content renders at **build time**. Nothing is fetched at runtime.
 
 ```
-main branch     →  Source code (src/, public/)
-gh-pages branch →  Build output (dist/)
+source  →  build  →  static HTML  →  deploy
 ```
 
-`deploy.sh`: `npm run build` → force push dist to gh-pages
+- **Pushing data alone does not change the site.** A build and deploy must run. This is a
+  deliberate move to a slower pace layer, decided during the renewal — not a regression.
+- `src/data/*.json` (`bio`, `speaker`, `tags`, `scrap`) still hold the pre-renewal content
+  and are **not yet wired into any page**. Migrating them — prose to frontmatter markdown
+  via the `glob()` loader, pure structured data to JSON via the `file()` loader — is the
+  next work unit.
 
-### Key Files
+## Astro content collections — read the docs, not memory
+
+The collections API was rewritten in v5, and backward compatibility was **fully removed** in
+v6. Older training data confidently emits syntax that no longer exists. Check any generated
+collections code against this table:
+
+| Stale (pre-v5) | Current (v6+) |
+|------|------|
+| `src/content/config.ts` | `src/content.config.ts` |
+| `type: 'content'` / `'data'` | `loader:` required |
+| `entry.slug` | `entry.id` |
+| `entry.render()` method | `import { render } from 'astro:content'` |
+| `import { z } from 'astro:content'` / `'astro:schema'` | `import { z } from 'astro/zod'` |
+
+`astro` is pinned exactly (`"astro": "7.1.1"`, no caret). Upgrade only deliberately.
+
+Official docs MCP server:
+`claude mcp add --transport http astro-docs https://mcp.docs.astro.build/mcp`
+
+## Key Files
 
 | File | Purpose |
 |------|---------|
-| `src/components/HelloWorld.vue` | Main page component (company badge, section rendering) |
-| `src/data/speaker.json` | Speaker history (href, event, name, value, date, description) |
-| `src/data/bio.json` | Side projects (github-readme-stats card integration) |
-| `src/data/tags.json` | Tech stack badges |
-| `src/data/scrap.json` | External activities/media exposure |
+| `src/pages/index.astro` | Landing page (interim — full site pending) |
+| `astro.config.mjs` | `site` is the canonical URL; no `base` is set |
+| `public/CNAME` | Custom domain binding — load-bearing |
+| `.github/workflows/deploy.yml` | Build and publish |
+| `src/data/*.json` | Pre-renewal content, awaiting migration |
 
 ### speaker.json Schema
 
@@ -69,6 +109,3 @@ Latest entries at array top (reverse chronological order).
 ```json
 {"name": "GitHub repo name", "href": "Project URL"}
 ```
-
-- If `name` matches GitHub repo, github-readme-stats card displays
-- If not matched, only link shows (card breaks)
