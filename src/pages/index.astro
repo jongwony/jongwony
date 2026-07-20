@@ -1,10 +1,65 @@
 ---
+import { getCollection, render } from 'astro:content';
+
 const links = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jongwon-choi-366b5b111/' },
   { label: 'GitHub', href: 'https://github.com/jongwony' },
   { label: 'Email', href: 'mailto:lastone9182@gmail.com' },
   { label: 'Instagram', href: 'https://instagram.com/jongwony_' },
 ];
+
+const kindLabel = {
+  talk: '발표',
+  press: '보도',
+  project: '프로젝트',
+} as const;
+
+type ChronologyData = {
+  date: string;
+  dateEnd?: string;
+};
+
+// `date` carries its own precision in its length:
+// 'YYYY-MM-DD' → full date, 'YYYY-MM' → month, 'YYYY' → year.
+function formatDate(d: string): string {
+  const parts = d.split('-').map(Number);
+  if (parts.length === 1) return `${parts[0]}년`;
+  if (parts.length === 2) return `${parts[0]}년 ${parts[1]}월`;
+  return `${parts[0]}년 ${parts[1]}월 ${parts[2]}일`;
+}
+
+// Range: drop the parts of the end date that repeat the start, so
+// 2024-12-04 → 2024-12-05 reads '2024년 12월 4일 – 5일'.
+function formatDateRange(start: string, end: string): string {
+  const s = start.split('-');
+  const e = end.split('-');
+  const units = ['년', '월', '일'];
+  let shared = 0;
+  while (shared < Math.min(s.length, e.length) - 1 && s[shared] === e[shared]) shared++;
+  const endStr = e
+    .slice(shared)
+    .map((p, i) => `${Number(p)}${units[shared + i]}`)
+    .join(' ');
+  return `${formatDate(start)} – ${endStr}`;
+}
+
+function displayDate(data: ChronologyData): string {
+  return data.dateEnd ? formatDateRange(data.date, data.dateEnd) : formatDate(data.date);
+}
+
+// ISO-ish strings sort chronologically as plain strings; shorter (coarser)
+// dates land after the dated entries of the same month/year, as intended.
+const entries = (await getCollection('chronology')).sort((a, b) =>
+  a.data.date < b.data.date ? 1 : a.data.date > b.data.date ? -1 : 0,
+);
+
+const rendered = await Promise.all(
+  entries.map(async (entry) => {
+    const hasBody = Boolean(entry.body?.trim());
+    const Content = hasBody ? (await render(entry)).Content : null;
+    return { entry, Content };
+  }),
+);
 ---
 
 <!doctype html>
@@ -30,22 +85,130 @@ const links = [
       crossorigin="anonymous"></script>
   </head>
   <body>
-    <main>
-      <h1>Jongwon Choi</h1>
-      <p class="role">Data Engineer at <a href="https://delightroom.com/">딜라이트룸 (Alarmy)</a></p>
-      <p class="note">사이트를 새로 만드는 중입니다. 그동안은 아래에서 만나요.</p>
-      <ul class="links">
-        {
-          links.map((link) => (
-            <li>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))
-        }
-      </ul>
+    <main class="container">
+      <header class="site-header">
+        <h1>Jongwon Choi</h1>
+        <p class="role">Data Engineer at <a href="https://delightroom.com/">딜라이트룸 (Alarmy)</a></p>
+      </header>
+
+      <section class="timeline" aria-labelledby="timeline-heading">
+        <h2 id="timeline-heading">타임라인</h2>
+        <ol class="entries">
+          {
+            rendered.map(({ entry, Content }) => (
+              <li class={`entry kind-${entry.data.kind}`}>
+                <div class="entry-date">
+                  <time datetime={entry.data.date}>{displayDate(entry.data)}</time>
+                </div>
+                <span class="dot" aria-hidden="true" />
+                <article class:list={['entry-body', { 'has-media': Boolean(entry.data.image) }]}>
+                  <div class="entry-text">
+                    <span class="kind">{kindLabel[entry.data.kind]}</span>
+                    <h3 class="entry-title">
+                      {entry.data.link ? (
+                        <a href={entry.data.link}>{entry.data.title}</a>
+                      ) : (
+                        entry.data.title
+                      )}
+                    </h3>
+                    {entry.data.org && (
+                      <p class="org">
+                        {entry.data.orgUrl ? (
+                          <a href={entry.data.orgUrl}>{entry.data.org}</a>
+                        ) : (
+                          entry.data.org
+                        )}
+                      </p>
+                    )}
+                    {Content && (
+                      <div class="prose">
+                        <Content />
+                      </div>
+                    )}
+                    {entry.data.sourceNote && <p class="source-note">{entry.data.sourceNote}</p>}
+                  </div>
+                  {entry.data.image && (
+                    <figure class="entry-media">
+                      <img
+                        src={entry.data.image}
+                        alt={entry.data.title}
+                        loading="lazy"
+                        onerror="this.closest('.entry-media').style.display='none'"
+                      />
+                    </figure>
+                  )}
+                </article>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <section class="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">연락처</h2>
+        <ul class="links">
+          {
+            links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
     </main>
   </body>
 </html>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduceMotion) {
+    document.documentElement.classList.add('motion-on');
+
+    // One-shot reveal: each entry fades in once, then is unobserved.
+    const observer = new IntersectionObserver(
+      (observations) => {
+        for (const observation of observations) {
+          if (observation.isIntersecting) {
+            observation.target.classList.add('is-visible');
+            observer.unobserve(observation.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -8% 0px' },
+    );
+    document.querySelectorAll('.entry').forEach((el) => observer.observe(el));
+
+    // Rail fill: scroll progress 0..1 → CSS custom property → scaleY.
+    // The reading line sits at 60% of the viewport, but low enough that the
+    // end of the list can always reach it — so the rail fills exactly full
+    // when the last entry has been read, whatever the viewport height.
+    const entriesEl = document.querySelector<HTMLElement>('.entries');
+    if (entriesEl) {
+      let ticking = false;
+      const updateRail = () => {
+        ticking = false;
+        const rect = entriesEl.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const belowList = document.documentElement.scrollHeight - (window.scrollY + rect.bottom);
+        const readingLine = Math.max(vh * 0.6, vh - belowList);
+        const progress = (readingLine - rect.top) / rect.height;
+        const clamped = Math.min(1, Math.max(0, progress));
+        entriesEl.style.setProperty('--rail-progress', clamped.toFixed(4));
+      };
+      const onScroll = () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(updateRail);
+        }
+      };
+      updateRail();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+    }
+  }
+</script>
 
 <style is:global>
   :root {
@@ -70,6 +233,10 @@ const links = [
 
     --radius-pill: 999px;
     --duration-hover: 150ms;
+
+    --max-width: 960px;
+    --gap-section: 96px;
+    --gap-item: 56px;
   }
 
   * {
@@ -79,9 +246,6 @@ const links = [
   body {
     margin: 0;
     min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: var(--space-5);
     background: var(--surface-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
@@ -89,15 +253,26 @@ const links = [
     -moz-osx-font-smoothing: grayscale;
   }
 
-  main {
-    text-align: center;
-    max-width: 32rem;
+  .container {
+    max-width: var(--max-width);
+    margin-inline: auto;
+    padding-inline: var(--space-5);
   }
 
   h1 {
     margin: 0;
-    font: 700 clamp(2rem, 8vw, 3.5rem) / 1.25 var(--font-sans);
+    font: 700 clamp(1.75rem, 5vw, 2.5rem) / 1.25 var(--font-sans);
     letter-spacing: -0.02em;
+  }
+
+  h2 {
+    margin: 0 0 var(--space-7);
+    font: 700 1.375rem/1.4 var(--font-sans);
+    letter-spacing: -0.01em;
+  }
+
+  .site-header {
+    padding-top: var(--gap-section);
   }
 
   .role {
@@ -114,18 +289,172 @@ const links = [
     text-decoration: underline;
   }
 
-  .note {
-    margin: var(--space-4) 0 0;
-    font: 400 0.9375rem/1.75 var(--font-sans);
+  /* --- timeline --- */
+
+  .timeline {
+    margin-top: var(--gap-section);
+  }
+
+  .entries {
+    --rail-x: 156px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .entries::before,
+  .entries::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: calc(var(--rail-x) - 1px);
+    width: 2px;
+    border-radius: 1px;
+  }
+
+  .entries::before {
+    background: var(--color-border);
+  }
+
+  .entries::after {
+    background: var(--color-accent-strong);
+    transform: scaleY(var(--rail-progress, 1));
+    transform-origin: top;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 140px 32px minmax(0, 1fr);
+    margin-bottom: var(--gap-item);
+  }
+
+  .entry:last-child {
+    margin-bottom: 0;
+  }
+
+  .entry-date {
+    padding-top: 2px;
+    text-align: right;
+    font: 500 0.875rem/1.6 var(--font-sans);
     color: var(--color-text-muted);
+  }
+
+  .dot {
+    justify-self: center;
+    width: 10px;
+    height: 10px;
+    margin-top: 7px;
+    border: 2px solid var(--color-accent-strong);
+    border-radius: 50%;
+    background: var(--surface-bg);
+  }
+
+  .entry-body {
+    min-width: 0;
+  }
+
+  .entry-body.has-media {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .kind {
+    display: inline-block;
+    margin-bottom: var(--space-2);
+    padding: 2px 10px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-subtle);
+    color: var(--color-accent-strong);
+    font: 600 0.75rem/1.5 var(--font-sans);
+  }
+
+  .entry-title {
+    margin: 0;
+    font: 700 1.125rem/1.5 var(--font-sans);
+    letter-spacing: -0.01em;
+  }
+
+  .entry-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .entry-title a:hover {
+    color: var(--color-accent-strong);
+    text-decoration: underline;
+  }
+
+  .org {
+    margin: var(--space-2) 0 0;
+    font: 500 0.9375rem/1.6 var(--font-sans);
+    color: var(--color-text-muted);
+  }
+
+  .org a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+    transition:
+      color var(--duration-hover) ease-out,
+      border-color var(--duration-hover) ease-out;
+  }
+
+  .org a:hover {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
+  }
+
+  .prose {
+    margin-top: var(--space-3);
+    font: 400 0.9375rem/1.75 var(--font-sans);
+  }
+
+  .prose p {
+    margin: 0 0 var(--space-3);
+  }
+
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  .prose a {
+    color: var(--color-accent-strong);
+  }
+
+  .source-note {
+    margin: var(--space-3) 0 0;
+    font: 400 0.8125rem/1.6 var(--font-sans);
+    color: var(--color-text-muted);
+  }
+
+  .entry-media {
+    margin: 0;
+  }
+
+  .entry-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+
+  /* --- contact --- */
+
+  .contact {
+    margin-top: var(--gap-section);
+    padding-bottom: var(--gap-section);
   }
 
   .links {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: var(--space-2);
-    margin: var(--space-7) 0 0;
+    margin: 0;
     padding: 0;
     list-style: none;
   }
@@ -146,5 +475,74 @@ const links = [
     border-color: var(--color-accent-strong);
     background: var(--color-accent-subtle);
     color: var(--color-accent-strong);
+  }
+
+  /* --- reveal on entry (only when JS confirmed motion is allowed) --- */
+
+  .motion-on .entry {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 500ms ease-out,
+      transform 500ms ease-out;
+  }
+
+  .motion-on .entry.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .motion-on .entry {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* --- narrow viewports: single column, rail close to the edge --- */
+
+  @media (max-width: 860px) {
+    :root {
+      --gap-section: 64px;
+      --gap-item: 32px;
+    }
+
+    .entries {
+      --rail-x: 10px;
+    }
+
+    .entry {
+      display: block;
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .entry-date {
+      margin-bottom: var(--space-2);
+      padding-top: 0;
+      text-align: left;
+    }
+
+    .dot {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .container {
+      padding-inline: var(--space-4);
+    }
+
+    .entry-body.has-media {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .entry-media {
+      max-width: 320px;
+    }
   }
 </style>
